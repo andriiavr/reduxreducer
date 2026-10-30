@@ -12,9 +12,10 @@ const tasksInitialState = [
 const tasksSlice = createSlice({
   name: "tasks",
   initialState: tasksInitialState,
+
   reducers: {
     addTask: {
-      prepareTask(text) {
+      prepare(text) {
         return {
           payload: {
             id: nanoid(),
@@ -24,6 +25,7 @@ const tasksSlice = createSlice({
         };
       },
       reducer(state, action) {
+        console.log(action.payload);
         state.push(action.payload);
       },
     },
@@ -31,7 +33,7 @@ const tasksSlice = createSlice({
       return state.filter((task) => task.id !== action.payload);
     },
     toggleTask(state, action) {
-        return state.map((task) => {
+      return state.map((task) => {
         if (task.id !== action.payload) {
           return task;
         }
@@ -42,15 +44,21 @@ const tasksSlice = createSlice({
       });
     },
     toggleAll(state) {
-        return state.map(task => ({...task, completed: true}))
+      return state.map((task) => ({ ...task, completed: true }));
     },
     deleteAllCompleted(state) {
-        return state.filter(task => !task.completed)
+      return state.filter((task) => !task.completed);
     },
   },
 });
-console.log(tasksSlice)
+console.log(tasksSlice);
 
-export const {addTask, deleteTask, toggleTask, toggleAll, deleteAllCompleted} = tasksSlice.actions
+export const {
+  addTask,
+  deleteTask,
+  toggleTask,
+  toggleAll,
+  deleteAllCompleted,
+} = tasksSlice.actions;
 
-export const tasksReducer = tasksSlice.reducer
+export const tasksReducer = tasksSlice.reducer;

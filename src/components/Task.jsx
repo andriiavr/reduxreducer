@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import { deleteTask, toggleTask } from "../redux/actions";
 import { MdDelete } from "react-icons/md";
+import { deleteTask, toggleTask } from "../redux/tasksSlice";
 
 export const Task = ({ task }) => {
   const dispatch = useDispatch();

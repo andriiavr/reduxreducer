@@ -2,12 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button } from "./Button";
 import { statusFilters } from "../redux/constants";
 import { getStatusFilter } from "../redux/selectors";
-import { updateFilter } from "../redux/actions";
+import { setStatusFilter } from "../redux/filtersSlice";
 
 export const StatusFilter = () => {
   const filter = useSelector(getStatusFilter);
   const dispatch = useDispatch()
-  const handleFilterChange = (value) => dispatch(updateFilter(value));
+  const handleFilterChange = (value) => dispatch(setStatusFilter(value));
 
   console.log(filter === statusFilters.all)
   return (

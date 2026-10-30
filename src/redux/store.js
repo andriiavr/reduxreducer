@@ -1,7 +1,18 @@
-import { legacy_createStore as createStore } from "redux";
-import { rootReducer } from "./reducer";
-import { devToolsEnhancer } from "@redux-devtools/extension";
+// import { legacy_createStore as createStore } from "redux";
+// import { rootReducer } from "./reducer";
+// import { devToolsEnhancer } from "@redux-devtools/extension";
 
-const enhancer = devToolsEnhancer();
+// const enhancer = devToolsEnhancer();
 
-export const store = createStore(rootReducer, enhancer);
+// export const store = createStore(rootReducer, enhancer);
+
+import { configureStore } from "@reduxjs/toolkit";
+import { tasksReducer } from "./tasksSlice";
+import { filtersReducer } from "./filtersSlice";
+
+export const store = configureStore({
+  reducer: {
+    tasks: tasksReducer,
+    filters: filtersReducer,
+  },
+});
